@@ -26,7 +26,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        {/* ✅ Proper favicon setup */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        <meta name="theme-color" content="#000000" />
+        <title>Cryptix Presale</title>
       </head>
       <body className="bg-gradient-to-br from-black via-purple-900 to-blue-900 text-white min-h-screen">
         <WagmiProvider config={wagmiConfig}>
@@ -72,7 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   The Future of Crypto Starts with <span className="text-purple-400">Cryptix</span>
                 </h1>
                 <p
-                  className="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-zinc-300"
+                  className="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-white/90"
                   data-aos="fade-up"
                   data-aos-delay="200"
                 >
