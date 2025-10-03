@@ -26,11 +26,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        {/* ✅ Custom favicon (cache-busted so browser reloads it) */}
-        <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=2" />
-        <link rel="apple-touch-icon" href="/favicon.png?v=2" />
-        <title>Cryptix Presale</title>
+        {/* ✅ Custom favicon */}
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </head>
       <body className="bg-gradient-to-br from-black via-purple-900 to-blue-900 text-white min-h-screen">
         <WagmiProvider config={wagmiConfig}>
@@ -46,8 +43,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <Image
                       src="/logo-cryptix.png"
                       alt="Cryptix Logo"
-                      width={140}
-                      height={40}
+                      width={180}   // Increased size
+                      height={60}   // Increased size
                       priority
                     />
                   </Link>
@@ -76,7 +73,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   The Future of Crypto Starts with <span className="text-purple-400">Cryptix</span>
                 </h1>
                 <p
-                  className="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-white/90"
+                  className="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-white/90" 
                   data-aos="fade-up"
                   data-aos-delay="200"
                 >
@@ -99,20 +96,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 {/* Footer */}
                 <footer className="mt-20 space-y-10 text-center">
 
-                  {/* Logos Side by Side */}
-                  <div className="flex justify-center gap-6" data-aos="fade-up">
+                  {/* ✅ Only ONE logo now */}
+                  <div className="flex justify-center" data-aos="fade-up">
                     <Image
                       src="/logo-cryptix.png"
-                      alt="Cryptix Neon Logo"
-                      width={160}
-                      height={160}
-                    />
-                    <Image
-                      src="/logo-original.png"
-                      alt="Cryptix Original Logo"
-                      width={160}
-                      height={160}
-                      className="rounded-lg"
+                      alt="Cryptix Logo"
+                      width={180}
+                      height={180}
                     />
                   </div>
 
@@ -136,22 +126,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       <div className="relative grid md:grid-cols-4 gap-10 md:gap-8 text-center">
                         <div className="p-6 rounded-2xl border border-purple-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:shadow-[0_0_35px_rgba(168,85,247,0.6)] hover:scale-105 transition relative" data-aos="fade-up">
                           <p className="text-lg font-semibold text-white">🔹 Phase 1</p>
-                          <p className="mt-2 text-sm text-zinc-300">Presale Launch</p>
+                          <p className="mt-2 text-sm text-zinc-300">Launch of the CRPX presale with tiered phases, early access pricing, and wallet integration. Focus on transparency and a seamless buying experience for investors.</p>
                         </div>
 
                         <div className="p-6 rounded-2xl border border-green-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_35px_rgba(34,197,94,0.6)] hover:scale-105 transition relative" data-aos="fade-up" data-aos-delay="200">
                           <p className="text-lg font-semibold text-white">🌍 Phase 2</p>
-                          <p className="mt-2 text-sm text-zinc-300">Community Growth</p>
+                          <p className="mt-2 text-sm text-zinc-300">Expansion of the Cryptix community through social campaigns, Telegram & Twitter growth, and strategic partnerships. Building awareness and trust in CRPX.</p>
                         </div>
 
                         <div className="p-6 rounded-2xl border border-blue-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_35px_rgba(59,130,246,0.6)] hover:scale-105 transition relative" data-aos="fade-up" data-aos-delay="400">
                           <p className="text-lg font-semibold text-white">📈 Phase 3</p>
-                          <p className="mt-2 text-sm text-zinc-300">Exchange Listings</p>
+                          <p className="mt-2 text-sm text-zinc-300">Listing CRPX on centralized (CEX) and decentralized (DEX) exchanges, alongside CoinGecko & CoinMarketCap. Goal: increase liquidity and accessibility worldwide.</p>
                         </div>
 
                         <div className="p-6 rounded-2xl border border-pink-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(236,72,153,0.3)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] hover:scale-105 transition relative" data-aos="fade-up" data-aos-delay="600">
                           <p className="text-lg font-semibold text-white">♾ Phase 4</p>
-                          <p className="mt-2 text-sm text-zinc-300">Ecosystem Expansion</p>
+                          <p className="mt-2 text-sm text-zinc-300">Expanding the Cryptix ecosystem with staking, DeFi integrations, and NFT utilities. Focus on real-world utility and long-term sustainability of the project.</p>
                         </div>
                       </div>
                     </div>
