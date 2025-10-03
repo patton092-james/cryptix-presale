@@ -26,12 +26,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        {/* ✅ Proper favicon setup */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
-        <meta name="theme-color" content="#000000" />
+        {/* ✅ Custom favicon (cache-busted so browser reloads it) */}
+        <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=2" />
+        <link rel="apple-touch-icon" href="/favicon.png?v=2" />
         <title>Cryptix Presale</title>
       </head>
       <body className="bg-gradient-to-br from-black via-purple-900 to-blue-900 text-white min-h-screen">
