@@ -9,7 +9,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { wagmiConfig } from '@/lib/wallet'
 import Link from 'next/link'
 import Image from 'next/image'
-import { FaTelegramPlane, FaTwitter, FaDiscord, FaGlobe } from 'react-icons/fa' // brand icons
+import { FaTelegramPlane, FaTwitter, FaDiscord, FaGlobe } from 'react-icons/fa'
 
 const queryClient = new QueryClient()
 
@@ -17,8 +17,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   // Initialize AOS animations
   useEffect(() => {
     AOS.init({
-      duration: 1000, // animation speed in ms
-      once: true, // run only once
+      duration: 1000,
+      once: true,
       easing: 'ease-in-out',
     })
   }, [])
@@ -36,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {/* Navbar */}
               <header className="sticky top-0 z-50 bg-white/5 backdrop-blur-md border-b border-white/10 shadow-lg">
                 <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+                  
                   {/* Left: Logo */}
                   <Link href="/" className="flex items-center gap-2">
                     <Image
@@ -93,12 +94,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
                 {/* Footer */}
                 <footer className="mt-20 space-y-10 text-center">
-                  
+
                   {/* Logos Side by Side */}
-                  <div
-                    className="flex justify-center gap-6"
-                    data-aos="fade-up"
-                  >
+                  <div className="flex justify-center gap-6" data-aos="fade-up">
                     <Image
                       src="/logo-cryptix.png"
                       alt="Cryptix Neon Logo"
@@ -114,7 +112,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     />
                   </div>
 
-                  {/* Roadmap Timeline */}
+                  {/* Roadmap */}
                   <section
                     id="roadmap"
                     className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-10 shadow-lg mt-16"
@@ -132,46 +130,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
                       {/* Roadmap phases */}
                       <div className="relative grid md:grid-cols-4 gap-10 md:gap-8 text-center">
-                        
-                        {/* Phase 1 */}
-                        <div
-                          className="p-6 rounded-2xl border border-purple-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:shadow-[0_0_35px_rgba(168,85,247,0.6)] hover:scale-105 transition relative"
-                          data-aos="fade-up"
-                        >
-                          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-500 roadmap-dot"></div>
+                        <div className="p-6 rounded-2xl border border-purple-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:shadow-[0_0_35px_rgba(168,85,247,0.6)] hover:scale-105 transition relative" data-aos="fade-up">
                           <p className="text-lg font-semibold text-white">🔹 Phase 1</p>
                           <p className="mt-2 text-sm text-zinc-300">Presale Launch</p>
                         </div>
 
-                        {/* Phase 2 */}
-                        <div
-                          className="p-6 rounded-2xl border border-green-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_35px_rgba(34,197,94,0.6)] hover:scale-105 transition relative"
-                          data-aos="fade-up"
-                          data-aos-delay="200"
-                        >
-                          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 roadmap-dot"></div>
+                        <div className="p-6 rounded-2xl border border-green-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_35px_rgba(34,197,94,0.6)] hover:scale-105 transition relative" data-aos="fade-up" data-aos-delay="200">
                           <p className="text-lg font-semibold text-white">🌍 Phase 2</p>
                           <p className="mt-2 text-sm text-zinc-300">Community Growth</p>
                         </div>
 
-                        {/* Phase 3 */}
-                        <div
-                          className="p-6 rounded-2xl border border-blue-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_35px_rgba(59,130,246,0.6)] hover:scale-105 transition relative"
-                          data-aos="fade-up"
-                          data-aos-delay="400"
-                        >
-                          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-500 roadmap-dot"></div>
+                        <div className="p-6 rounded-2xl border border-blue-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_35px_rgba(59,130,246,0.6)] hover:scale-105 transition relative" data-aos="fade-up" data-aos-delay="400">
                           <p className="text-lg font-semibold text-white">📈 Phase 3</p>
                           <p className="mt-2 text-sm text-zinc-300">Exchange Listings</p>
                         </div>
 
-                        {/* Phase 4 */}
-                        <div
-                          className="p-6 rounded-2xl border border-pink-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(236,72,153,0.3)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] hover:scale-105 transition relative"
-                          data-aos="fade-up"
-                          data-aos-delay="600"
-                        >
-                          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-pink-500 roadmap-dot"></div>
+                        <div className="p-6 rounded-2xl border border-pink-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(236,72,153,0.3)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] hover:scale-105 transition relative" data-aos="fade-up" data-aos-delay="600">
                           <p className="text-lg font-semibold text-white">♾ Phase 4</p>
                           <p className="mt-2 text-sm text-zinc-300">Ecosystem Expansion</p>
                         </div>

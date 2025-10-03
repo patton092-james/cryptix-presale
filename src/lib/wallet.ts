@@ -4,10 +4,10 @@ import { http } from 'wagmi'
 import { bsc } from 'wagmi/chains'
 import { getDefaultConfig } from '@rainbow-me/rainbowkit'
 
-// ✅ Directly use getDefaultConfig (don't wrap in createConfig)
+// ✅ Use your real WalletConnect Project ID
 export const wagmiConfig = getDefaultConfig({
   appName: 'Cryptix Presale',
-  projectId: 'WALLETCONNECT_PROJECT_ID', // can leave as-is for MetaMask
+  projectId: '20a191638971c0c25b62b32305af4da2', // 👈 real project ID
   chains: [bsc],
   transports: {
     [bsc.id]: http('https://bsc-dataseed.binance.org'),

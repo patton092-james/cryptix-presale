@@ -38,9 +38,166 @@ body {
     box-shadow: 0 0 20px rgba(168, 85, 247, 0.9), 0 0 40px rgba(168, 85, 247, 0.5);
   }
 }
-
-/* Apply pulse to roadmap dots */
 .roadmap-dot {
   animation: pulse-glow 2s infinite ease-in-out;
   border-radius: 9999px;
+}
+
+/* =====================
+   RainbowKit Wallet Modal – Center + Glass
+   ===================== */
+[data-rk-overlay] {
+  position: fixed !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 9999 !important;
+  background: rgba(0, 0, 0, 0.65) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+[data-rk] [role="dialog"] {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 10000 !important;
+
+  max-width: 380px !important;
+  width: 90% !important;
+  border-radius: 16px !important;
+  padding: 20px !important;
+
+  background: rgba(30, 30, 40, 0.9) !important;
+  backdrop-filter: blur(16px) !important;
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.7) !important;
+
+  max-height: 90vh !important;
+  overflow: hidden !important;
+}
+
+/* =====================
+   Wallet Option Rows – Horizontal logo + white bold name
+   ===================== */
+[data-rk] [role="dialog"] button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+
+  width: 100% !important;
+  padding: 10px 12px !important;
+  margin: 6px 0 !important;
+  min-height: 52px !important;
+  gap: 12px !important;
+
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* Force row layout */
+[data-rk] [role="dialog"] button > div,
+[data-rk] [role="dialog"] button > div > div,
+[data-rk] [role="dialog"] button > div > div > div {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+/* Icon */
+[data-rk] [role="dialog"] button img,
+[data-rk] [role="dialog"] button svg {
+  width: 28px !important;
+  height: 28px !important;
+  flex-shrink: 0 !important;
+  border-radius: 6px !important;
+}
+
+/* Wallet name = white + bold */
+[data-rk] [role="dialog"] button span {
+  display: inline-block !important;
+  white-space: nowrap !important;
+  line-height: 1.2 !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;   /* Bold */
+  color: #ffffff !important;     /* Pure white */
+  text-align: left !important;
+}
+
+/* Subtext smaller + softer */
+[data-rk] [role="dialog"] button small,
+[data-rk] [role="dialog"] button [class*="sub"],
+[data-rk] [role="dialog"] button [data-subtext] {
+  font-size: 12px !important;
+  color: rgba(255,255,255,0.66) !important;
+}
+
+/* Hover/active */
+[data-rk] [role="dialog"] button:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(168, 85, 247, 0.35) !important;
+  transform: translateY(-1px);
+}
+[data-rk] [role="dialog"] button:active {
+  transform: translateY(0);
+}
+
+/* Remove scrollbars */
+[data-rk] [role="dialog"] * {
+  scrollbar-width: none !important;
+}
+[data-rk] [role="dialog"] *::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* === Force white, bold wallet text inside RainbowKit === */
+[data-rk] [role="dialog"] button span,
+[data-rk] [role="dialog"] button div,
+[data-rk] [role="dialog"] button p,
+[data-rk] [role="dialog"] button strong,
+[data-rk] [role="dialog"] button label,
+[data-rk] [role="dialog"] button small {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important; /* WebKit/Safari */
+  font-weight: 700 !important;  /* bold */
+}
+
+/* Pills (Recent/Installed) */
+[data-rk] [role="dialog"] button small {
+  opacity: 0.9 !important;
+}
+
+/* =====================
+   WalletConnect QR Code – Neon & Logo
+   ===================== */
+.rk-qr-code {
+  position: relative !important;
+  border-radius: 16px !important;
+  padding: 12px !important;
+  background: radial-gradient(circle at center, #0f0f0f, #1a1a1a) !important;
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.8) !important;
+}
+
+/* Make QR itself white instead of black */
+.rk-qr-code canvas {
+  filter: invert(1) contrast(1.3) brightness(1.3) !important;
+  border-radius: 12px !important;
+}
+
+/* Cryptix logo overlay */
+.rk-qr-code::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 48px;
+  height: 48px;
+  background: url("/logo-cryptix.png") no-repeat center center;
+  background-size: contain;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.7);
 }
