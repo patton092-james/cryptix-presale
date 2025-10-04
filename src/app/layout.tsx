@@ -1,9 +1,9 @@
 'use client'
 
 import './globals.css'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import AOS from 'aos'
-import { WagmiProvider } from 'wagmi'
+import { WagmiProvider, useAccount } from 'wagmi'
 import { RainbowKitProvider, darkTheme, ConnectButton } from '@rainbow-me/rainbowkit'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { wagmiConfig } from '@/lib/wallet'
@@ -12,6 +12,56 @@ import Image from 'next/image'
 import { FaTelegramPlane, FaTwitter, FaDiscord, FaGlobe } from 'react-icons/fa'
 
 const queryClient = new QueryClient()
+
+// ✅ Referral Section
+function ReferralSection() {
+  const { address, isConnected } = useAccount()
+  const [refLink, setRefLink] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (isConnected && address) {
+      setRefLink(`https://cryptixcoin.com/?ref=${address}`)
+    } else {
+      setRefLink(null)
+    }
+  }, [isConnected, address])
+
+  const copyToClipboard = () => {
+    if (refLink) {
+      navigator.clipboard.writeText(refLink)
+      alert('Referral link copied!')
+    }
+  }
+
+  if (!isConnected) return null
+
+  return (
+    <section
+      id="referral"
+      className="rounded-xl border border-purple-500/40 bg-black/40 backdrop-blur-md p-6 shadow-lg mt-10 text-center"
+      data-aos="fade-up"
+    >
+      <h3 className="text-2xl font-bold text-purple-400 mb-4">🔗 Your Referral Link</h3>
+      <p className="text-sm text-zinc-300 mb-4">
+        Share this link with your friends. You’ll earn CRPX rewards for every referral that buys during the presale.
+      </p>
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+        <input
+          type="text"
+          value={refLink || ''}
+          readOnly
+          className="w-full md:w-2/3 px-3 py-2 rounded-lg bg-white/10 text-white border border-purple-400/30"
+        />
+        <button
+          onClick={copyToClipboard}
+          className="px-6 py-2 rounded-lg bg-purple-600 text-white font-semibold hover:shadow-[0_0_20px_rgba(168,85,247,0.8)] transition"
+        >
+          Copy
+        </button>
+      </div>
+    </section>
+  )
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -25,7 +75,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        {/* ✅ Custom favicon */}
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </head>
       <body className="bg-gradient-to-br from-black via-purple-900 to-blue-900 text-white min-h-screen">
@@ -88,9 +137,40 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <div className="max-w-5xl mx-auto px-4 py-12" id="presale">
                 {children}
 
-                <footer className="mt-20 space-y-10 text-center">
+                {/* Referral Section */}
+                <ReferralSection />
 
-                  {/* ✅ Only one logo */}
+                {/* How to Buy Section */}
+                <section
+                  id="how-to-buy"
+                  className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-8 shadow-lg mt-16"
+                  data-aos="fade-up"
+                >
+                  <h3 className="text-2xl font-bold mb-6 text-purple-400">💰 How to Buy CRPX</h3>
+                  <ul className="space-y-4 text-left">
+                    <li className="text-lg text-purple-400 font-semibold">
+                      1️⃣ Connect your wallet (MetaMask, TrustWallet, WalletConnect).
+                    </li>
+                    <li className="text-lg text-cyan-400 font-semibold">
+                      2️⃣ Choose payment: BNB or USDT (BEP20 on BNB Chain).
+                    </li>
+                    <li className="text-lg text-purple-400 font-semibold">
+                      3️⃣ Enter the amount and confirm the transaction.
+                    </li>
+                    <li className="text-lg text-cyan-400 font-semibold">
+                      4️⃣ After presale ends, claim your CRPX tokens directly from the site.
+                    </li>
+                  </ul>
+                  <p className="mt-6">
+                    Visit:{" "}
+                    <a href="https://cryptixcoin.com" target="_blank" className="text-black font-bold underline">
+                      cryptixcoin.com
+                    </a>
+                  </p>
+                </section>
+
+                <footer className="mt-20 space-y-10 text-center">
+                  {/* Only one logo */}
                   <div className="flex justify-center gap-6" data-aos="fade-up">
                     <Image
                       src="/logo-cryptix.png"
@@ -111,36 +191,35 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </h2>
 
                     <div className="relative grid md:grid-cols-4 gap-10 md:gap-8 text-center">
-
-                      {/* Phase 1 */}
-                      <div className="p-6 rounded-2xl border border-purple-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:shadow-[0_0_35px_rgba(168,85,247,0.6)] hover:scale-105 transition relative">
+                      <div className="p-6 rounded-2xl border border-purple-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_25px_rgba(168,85,247,0.5)] hover:shadow-[0_0_40px_rgba(168,85,247,0.9)] hover:scale-105 transition relative">
                         <p className="text-lg font-semibold text-white">🔹 Phase 1</p>
                         <p className="mt-2 text-sm text-zinc-300">
-                          Launch of the CRPX presale with tiered phases, early access pricing, and wallet integration. Focus on transparency and a seamless buying experience for investors.
+                          Presale Launch: Deploy Cryptix smart contracts, open presale platform with BNB & USDT
+                          support, and start first wave of marketing campaigns. Ensure secure token distribution
+                          and seamless user experience.
                         </p>
                       </div>
-
-                      {/* Phase 2 */}
-                      <div className="p-6 rounded-2xl border border-green-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_35px_rgba(34,197,94,0.6)] hover:scale-105 transition relative">
+                      <div className="p-6 rounded-2xl border border-green-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_25px_rgba(34,197,94,0.5)] hover:shadow-[0_0_40px_rgba(34,197,94,0.9)] hover:scale-105 transition relative">
                         <p className="text-lg font-semibold text-white">🌍 Phase 2</p>
                         <p className="mt-2 text-sm text-zinc-300">
-                          Expansion of the Cryptix community through global campaigns, Telegram & Twitter growth, influencer partnerships, and AMAs. Building strong awareness and trust in CRPX.
+                          Community Growth: Build global awareness through AMAs, influencer collaborations,
+                          referral programs, and social media expansion. Engage with early adopters and reward loyal
+                          supporters.
                         </p>
                       </div>
-
-                      {/* Phase 3 */}
-                      <div className="p-6 rounded-2xl border border-blue-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_35px_rgba(59,130,246,0.6)] hover:scale-105 transition relative">
+                      <div className="p-6 rounded-2xl border border-blue-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_25px_rgba(59,130,246,0.5)] hover:shadow-[0_0_40px_rgba(59,130,246,0.9)] hover:scale-105 transition relative">
                         <p className="text-lg font-semibold text-white">📈 Phase 3</p>
                         <p className="mt-2 text-sm text-zinc-300">
-                          Listing CRPX on major centralized (CEX) and decentralized (DEX) exchanges, alongside CoinGecko & CoinMarketCap. Goal: increase liquidity and global accessibility.
+                          Exchange Listings: Apply for CoinGecko & CoinMarketCap, secure CEX/DEX listings, and
+                          launch staking pools. Form NFT marketplace collaborations to add real use cases for CRPX.
                         </p>
                       </div>
-
-                      {/* Phase 4 */}
-                      <div className="p-6 rounded-2xl border border-pink-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_20px_rgba(236,72,153,0.3)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] hover:scale-105 transition relative">
+                      <div className="p-6 rounded-2xl border border-pink-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_25px_rgba(236,72,153,0.5)] hover:shadow-[0_0_40px_rgba(236,72,153,0.9)] hover:scale-105 transition relative">
                         <p className="text-lg font-semibold text-white">♾ Phase 4</p>
                         <p className="mt-2 text-sm text-zinc-300">
-                          Expanding the Cryptix ecosystem with staking, DeFi integrations, and NFT utilities. Focus on real-world use cases and long-term sustainability of the project.
+                          Ecosystem Expansion: Launch P2E gaming integration, expand DeFi utilities (staking,
+                          farming, liquidity pools), and develop cross-chain bridges. Global brand partnerships and
+                          mainstream marketing to scale Cryptix worldwide.
                         </p>
                       </div>
                     </div>
@@ -157,35 +236,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </a>
                   </section>
 
-                  {/* How to Buy */}
-                  <section
-                    id="how-to-buy"
-                    className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-8 shadow-lg mt-16"
-                    data-aos="fade-up"
-                  >
-                    <h3 className="text-2xl font-bold mb-6 text-purple-400">💰 How to Buy CRPX</h3>
-                    <ul className="space-y-4 text-left">
-                      <li className="text-lg text-purple-400 font-semibold">
-                        1️⃣ Connect your wallet (MetaMask, TrustWallet, WalletConnect).
-                      </li>
-                      <li className="text-lg text-cyan-400 font-semibold">
-                        2️⃣ Choose payment: BNB or USDT (BEP20 on BNB Chain).
-                      </li>
-                      <li className="text-lg text-purple-400 font-semibold">
-                        3️⃣ Enter the amount and confirm the transaction.
-                      </li>
-                      <li className="text-lg text-cyan-400 font-semibold">
-                        4️⃣ After presale ends, claim your CRPX tokens directly from the site.
-                      </li>
-                    </ul>
-                    <p className="mt-6">
-                      Visit:{" "}
-                      <a href="https://cryptixcoin.com" target="_blank" className="text-black font-bold underline">
-                        cryptixcoin.com
-                      </a>
-                    </p>
-                  </section>
-
                   {/* Community */}
                   <section
                     id="community"
@@ -194,16 +244,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   >
                     <h3 className="text-lg font-semibold mb-6">Join Our Community</h3>
                     <div className="flex justify-center gap-6">
-                      <a href="https://t.me/cryptixcoin" target="_blank" className="p-3 rounded-full bg-purple-600/30 hover:bg-purple-600/60 transition">
+                      <a href="https://t.me/cryptixcoin" target="_blank" className="p-3 rounded-full bg-purple-600/30 hover:bg-purple-600/60 shadow-[0_0_20px_rgba(168,85,247,0.8)] transition">
                         <FaTelegramPlane size={24} />
                       </a>
-                      <a href="https://x.com/cryptix_ai25?s=21" target="_blank" className="p-3 rounded-full bg-purple-600/30 hover:bg-purple-600/60 transition">
+                      <a href="https://x.com/cryptix_ai25?s=21" target="_blank" className="p-3 rounded-full bg-purple-600/30 hover:bg-purple-600/60 shadow-[0_0_20px_rgba(168,85,247,0.8)] transition">
                         <FaTwitter size={24} />
                       </a>
-                      <a href="#" className="p-3 rounded-full bg-purple-600/30 hover:bg-purple-600/60 transition">
+                      <a href="#" className="p-3 rounded-full bg-purple-600/30 hover:bg-purple-600/60 shadow-[0_0_20px_rgba(168,85,247,0.8)] transition">
                         <FaDiscord size={24} />
                       </a>
-                      <a href="#" className="p-3 rounded-full bg-purple-600/30 hover:bg-purple-600/60 transition">
+                      <a href="#" className="p-3 rounded-full bg-purple-600/30 hover:bg-purple-600/60 shadow-[0_0_20px_rgba(168,85,247,0.8)] transition">
                         <FaGlobe size={24} />
                       </a>
                     </div>

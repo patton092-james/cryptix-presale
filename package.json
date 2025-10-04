@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^2.2.8",
+    "@supabase/supabase-js": "^2.58.0",
     "aos": "^2.3.4",
     "lucide-react": "^0.544.0",
     "next": "15.5.4",
