@@ -162,24 +162,43 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </li>
                   </ul>
                   <p className="mt-6">
-                    Visit:{" "}
+                    Visit:{' '}
                     <a href="https://cryptixcoin.com" target="_blank" className="text-black font-bold underline">
                       cryptixcoin.com
                     </a>
                   </p>
                 </section>
 
-                <footer className="mt-20 space-y-10 text-center">
-                  {/* Only one logo */}
-                  <div className="flex justify-center gap-6" data-aos="fade-up">
-                    <Image
-                      src="/logo-cryptix.png"
-                      alt="Cryptix Logo"
-                      width={160}
-                      height={160}
-                    />
+                {/* Utility Section with Neon Glow */}
+                <section
+                  id="utility"
+                  className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-10 shadow-lg mt-16"
+                  data-aos="fade-up"
+                >
+                  <h2 className="text-3xl font-bold text-center mb-12 text-purple-400 drop-shadow">
+                    ⚡ CRPX Utility
+                  </h2>
+                  <div className="grid md:grid-cols-2 gap-8 text-center">
+                    <div className="p-6 rounded-2xl border border-purple-400/40 bg-black/40 backdrop-blur-md shadow-[0_0_15px_rgba(168,85,247,0.4)] hover:shadow-[0_0_30px_rgba(168,85,247,0.9)] hover:scale-105 transition">
+                      <h3 className="text-xl font-semibold mb-2 text-white">💳 Payments</h3>
+                      <p className="text-sm text-zinc-300">Fast, low-cost transfers across the BNB Chain for global transactions and micro-payments.</p>
+                    </div>
+                    <div className="p-6 rounded-2xl border border-green-400/40 bg-black/40 backdrop-blur-md shadow-[0_0_15px_rgba(34,197,94,0.4)] hover:shadow-[0_0_30px_rgba(34,197,94,0.9)] hover:scale-105 transition">
+                      <h3 className="text-xl font-semibold mb-2 text-white">🔒 Staking</h3>
+                      <p className="text-sm text-zinc-300">Stake CRPX to earn passive income and support the ecosystem while reducing circulating supply.</p>
+                    </div>
+                    <div className="p-6 rounded-2xl border border-blue-400/40 bg-black/40 backdrop-blur-md shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:shadow-[0_0_30px_rgba(59,130,246,0.9)] hover:scale-105 transition">
+                      <h3 className="text-xl font-semibold mb-2 text-white">🎮 Gaming</h3>
+                      <p className="text-sm text-zinc-300">Power play-to-earn (P2E) platforms with CRPX for in-game economies and rewards.</p>
+                    </div>
+                    <div className="p-6 rounded-2xl border border-pink-400/40 bg-black/40 backdrop-blur-md shadow-[0_0_15px_rgba(236,72,153,0.4)] hover:shadow-[0_0_30px_rgba(236,72,153,0.9)] hover:scale-105 transition">
+                      <h3 className="text-xl font-semibold mb-2 text-white">🖼 NFTs & DAO</h3>
+                      <p className="text-sm text-zinc-300">CRPX will be used for NFT transactions and decentralized governance, letting the community decide the future.</p>
+                    </div>
                   </div>
+                </section>
 
+                <footer className="mt-20 space-y-10 text-center">
                   {/* Roadmap */}
                   <section
                     id="roadmap"
@@ -189,37 +208,29 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <h2 className="text-3xl font-bold text-center mb-12 text-purple-400 drop-shadow">
                       🚀 Roadmap
                     </h2>
-
                     <div className="relative grid md:grid-cols-4 gap-10 md:gap-8 text-center">
                       <div className="p-6 rounded-2xl border border-purple-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_25px_rgba(168,85,247,0.5)] hover:shadow-[0_0_40px_rgba(168,85,247,0.9)] hover:scale-105 transition relative">
                         <p className="text-lg font-semibold text-white">🔹 Phase 1</p>
                         <p className="mt-2 text-sm text-zinc-300">
-                          Presale Launch: Deploy Cryptix smart contracts, open presale platform with BNB & USDT
-                          support, and start first wave of marketing campaigns. Ensure secure token distribution
-                          and seamless user experience.
+                          Presale Launch: Deploy Cryptix smart contracts, open presale platform with BNB & USDT support, and start first marketing campaigns.
                         </p>
                       </div>
                       <div className="p-6 rounded-2xl border border-green-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_25px_rgba(34,197,94,0.5)] hover:shadow-[0_0_40px_rgba(34,197,94,0.9)] hover:scale-105 transition relative">
                         <p className="text-lg font-semibold text-white">🌍 Phase 2</p>
                         <p className="mt-2 text-sm text-zinc-300">
-                          Community Growth: Build global awareness through AMAs, influencer collaborations,
-                          referral programs, and social media expansion. Engage with early adopters and reward loyal
-                          supporters.
+                          Community Growth: AMAs, influencers, referral programs, and social expansion. Early adopter engagement.
                         </p>
                       </div>
                       <div className="p-6 rounded-2xl border border-blue-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_25px_rgba(59,130,246,0.5)] hover:shadow-[0_0_40px_rgba(59,130,246,0.9)] hover:scale-105 transition relative">
                         <p className="text-lg font-semibold text-white">📈 Phase 3</p>
                         <p className="mt-2 text-sm text-zinc-300">
-                          Exchange Listings: Apply for CoinGecko & CoinMarketCap, secure CEX/DEX listings, and
-                          launch staking pools. Form NFT marketplace collaborations to add real use cases for CRPX.
+                          Exchange Listings: CEX/DEX, CoinGecko & CMC integration, staking pools, and NFT marketplace partnerships.
                         </p>
                       </div>
                       <div className="p-6 rounded-2xl border border-pink-500/40 bg-black/40 backdrop-blur-md shadow-[0_0_25px_rgba(236,72,153,0.5)] hover:shadow-[0_0_40px_rgba(236,72,153,0.9)] hover:scale-105 transition relative">
                         <p className="text-lg font-semibold text-white">♾ Phase 4</p>
                         <p className="mt-2 text-sm text-zinc-300">
-                          Ecosystem Expansion: Launch P2E gaming integration, expand DeFi utilities (staking,
-                          farming, liquidity pools), and develop cross-chain bridges. Global brand partnerships and
-                          mainstream marketing to scale Cryptix worldwide.
+                          Ecosystem Expansion: P2E games, DeFi integrations, cross-chain bridges, and global brand partnerships.
                         </p>
                       </div>
                     </div>
