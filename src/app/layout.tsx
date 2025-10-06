@@ -81,7 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <WagmiProvider config={wagmiConfig}>
           <QueryClientProvider client={queryClient}>
             <RainbowKitProvider modalSize="compact" theme={darkTheme()}>
-              
+
               {/* Navbar */}
               <header className="sticky top-0 z-50 bg-white/5 backdrop-blur-md border-b border-white/10 shadow-lg">
                 <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -228,7 +228,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   {/* Whitepaper */}
                   <section id="whitepaper" data-aos="fade-up">
                     <a
-                      href="/whitepaper.pdf"
+                      href="/Cryptix-whitepaper.pdf"
                       target="_blank"
                       className="inline-block px-6 py-3 rounded-lg bg-purple-600 text-white font-semibold hover:shadow-[0_0_20px_rgba(168,85,247,0.8)] transition"
                     >
